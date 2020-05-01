@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>天气预报</title>
+</head>
+<style>
+    a {
+        text-decoration: none;
+    }
+    
+    .box {
+        width: 500px;
+        margin: 30px auto 0;
+        border: 2px solid #000;
+    }
+    
+    .box h2 {
+        margin: -20px auto;
+        padding: 0;
+        width: 200px;
+        height: 30px;
+        margin-bottom: 20px;
+        text-align: center;
+        background-color: #fff;
+    }
+    
+    .box>p {
+        border-top: 1px solid #000;
+        border-bottom: 1px solid #000;
+        text-align: center;
+        padding: 1px 0;
+        line-height: 36px;
+    }
+    
+    .box p input {
+        height: 30px;
+        border: none;
+        outline: none;
+    }
+    
+    .box p input[type=text] {
+        width: 300px;
+    }
+    
+    .box .click {
+        padding: 0 20px 10px;
+        border-bottom: 1px solid #000;
+    }
+    
+    .box .click a {
+        margin: 0 10px;
+    }
+    
+    .box .content {
+        position: relative;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        min-height: 500px;
+        max-height: 1000px;
+        padding-bottom: 50px;
+        text-align: center;
+    }
+    
+    .box .content h5 {
+        width: 50px;
+        height: 30px;
+        line-height: 30px;
+        margin: 0 auto;
+    }
+    
+    .box .content li {
+        border-top: 1px solid #000;
+    }
+    
+    .box .content footer {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+    }
+    
+    .box .content .one {
+        color: #666;
+    }
+    
+    .box .content .two {
+        font-size: 16px;
+        color: orange;
+    }
+    
+    .box .content .two span {
+        color: royalblue;
+        font-size: 12px;
+    }
+    
+    .box .content .three {
+        color: skyblue;
+    }
+</style>
+
+<body>
+    <div id="box" class="box">
+        <h2>看天气了</h2>
+        <p> <input type="text" v-model="city" @keyup.enter="query"><input @click="query" type="button" value="查询"></p>
+
+        <div class="click">
+            <a href="javascript:;">北京</a>
+            <a href="javascript:;">上海</a>
+            <a href="javascript:;">广州</a>
+            <a href="javascript:;">深圳</a>
+        </div>
+
+        <ul class="content">
+            <h5>{{city}}</h5>
+            <li v-for="item in weather">
+                <p class="three">日期：{{item.date}}；</p>
+                <p class="one">天气情况：{{item.wea}}；</p>
+                <p class="two">最高温度：{{item.tem_day}}；<span>最低温{{item.tem_night}}</span></p>
+
+            </li>
+            <footer class="timer">更新时间时间:{{timer}}</footer>
+        </ul>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+
+    <!--
+        链接：
+        https://www.tianqiapi.com/free/week?
+        携带参数：
+        appid=35448368&appsecret=MHTegg7s&city=深圳 
+    -->
+    <script>
+        let box = new Vue({
+            el: "#box",
+            data: {
+                city: '',
+                weather: [],
+                timer: ''
+            },
+            methods: {
+                query: function() {
+                    console.log(this.city);
+                    let that = this;
+                    axios.get('https://www.tianqiapi.com/free/week?appid=35448368&appsecret=MHTegg7s&city=' + this.city)
+                        .then(function(response) {
+                            console.log(response.data.city);
+                            that.city = response.data.city;
+                            that.timer = response.data.update_time;
+                            that.weather = response.data.data;
+
+                            console.log(that.timer);
+                            console.log(that.weather);
+                            console.log(response.data);
+
+                        }).catch(function(err) {
+                            console.log(err);
+                        })
+                    console.log(this.timer);
+                    console.log(this.city);
+                    console.log(this.weather);
+
+
+
+                }
+            }
+        })
+    </script>
+
+
+
+</body>
+
+</html>

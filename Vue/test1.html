@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div class="app" v-html="html">{{appData}}
+        <input type="button" value="v-on指令" @click="cli">
+        <div v-text="appData"></div>
+
+    </div>
+    <div id="app" v-html="html"></div>
+
+</body>
+<script>
+    let app = new Vue({
+        el: ".app",
+        data: {
+            appData: 'hello vue!',
+            html: "<p></p>"
+        },
+        methods: {
+            cli: function() {
+                alert(8)
+            }
+        }
+    })
+</script>
+
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+    <button class="get">get</button>
+    <script>
+        document.querySelector('.get').onclick = function() {
+            axios.get('https://www.tianqiapi.com/free/week?appid=35448368&appsecret=MHTegg7s&city=深圳')
+                .then(function(response) {
+                    console.log(response);
+
+                }).catch(function(err) {
+                    console.log(err);
+
+                })
+        }
+    </script>
+</body>
+
+</html>

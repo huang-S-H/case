@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 引入重置样式 -->
+    <link rel="stylesheet" href="css/normalize.css">
+    <!-- 引入自己的样式 -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- 字体图标 -->
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_1785568_2tt28pokv1b.css">
+
+</head>
+
+<body>
+    <!-- 整个大盒子 -->
+    <div id="app" class="container">
+        <!-- 头部 -->
+        <nav class="head">
+            <!-- logo -->
+            <h1><a href="javascript:;"><em>初心</em></a></h1>
+            <!-- musicTitle -->
+            <p class="musicTitle">{{musicTitle}}</p>
+            <!-- search -->
+            <div class="search">
+                <input type="search" v-model="search" @keyup.enter="searchMusic">
+                <button @click="searchMusic">搜索</button>
+            </div>
+        </nav>
+        <!-- 主体 -->
+        <div class="body">
+            <div class="left">
+                <ul>
+                    <li v-for="(item,index) in musicList">
+                        <i @click="addSong(item.id,index)"></i> {{item.name}} - {{item.artists[0].name}}
+                        <em @click="playMV(item.mvid)" v-show="item.mvid!=0"></em>
+                    </li>
+                </ul>
+            </div>
+            <div class="center">
+                <div id="bigCircle" :class="{whirl:whir}">
+                    <div class="littleCircle"><img :src="imgUrl" alt=""></div>
+                </div>
+            </div>
+            <div class="right">
+                <h3>精彩评论:</h3>
+                <ul>
+                    <li v-for="item in comments">
+                        <div class="HeadPortraits"><img :src="item.user.avatarUrl" alt=""></div>
+                        <div class="comment">
+                            <span>{{item.user.nickname}}:</span>
+                            <p>{{item.content}}</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- 播放条 -->
+        <div class="player">
+            <div class="box">
+                <audio :src="musicUrl" @play="plays" @pause="pauses" controls="controls" autoplay="autoplay" loop="loop"></audio>
+            </div>
+        </div>
+        <!-- MV模块 -->
+        <div class="mask" v-show="mask">
+            <div class="mv">
+                <a href="javascript:;" @click="off">点此关闭</a>
+                <video controls="controls" autoplay="autoplay" :src="MVUrl"></video>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="./js/music.js"></script>
+
+</html>

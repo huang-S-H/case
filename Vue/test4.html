@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<style>
+    #box {
+        position: relative;
+        width: 300px;
+        height: 250px;
+        margin: 0 auto;
+        border: 1px solid #000;
+    }
+    
+    #box a {
+        display: block;
+        width: 20px;
+        height: 20px;
+        line-height: 20px;
+        text-decoration: none;
+        color: aliceblue;
+        background: rgba(0, 0, 0, .3);
+    }
+    
+    #box .left {
+        position: absolute;
+        top: 100px;
+        left: 0;
+    }
+    
+    #box .right {
+        position: absolute;
+        top: 100px;
+        right: 0;
+    }
+    
+    #box a:hover {
+        color: #000;
+    }
+    
+    #box img {
+        display: block;
+        width: 260px;
+        height: 250px;
+        margin: 0 auto;
+        ;
+    }
+</style>
+
+<body>
+    <div id="box">
+        <a class="left" href="javascript:;" @click="last" v-show="index!=0">⬅</a>
+        <img :src="imgArr[index]" alt="">
+        <a class="right" href="javascript:;" @click="next" v-show="index<imgArr.length-1">➡</a>
+    </div>
+    <script>
+        let box = new Vue({
+            el: "#box",
+            data: {
+                imgArr: [
+                    'img/111.jpg',
+                    'img/222.jpg',
+                    'img/333.jpg',
+                    'img/444.jpg',
+                    'img/555.jpg',
+                    'img/666.jpg'
+                ],
+                index: 0
+
+            },
+            methods: {
+                last: function() {
+
+                    this.index--
+                },
+                next: function() {
+
+                    this.index++;
+                    console.log(this.index);
+
+                }
+            }
+
+        })
+    </script>
+</body>
+
+</html>

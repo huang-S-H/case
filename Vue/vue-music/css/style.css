@@ -1,0 +1,373 @@
+/* 重置样式 */
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+h1,
+h3,
+p {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+body {
+    font-size: 12px;
+    color: #101f30;
+    background-color: #c3d7df;
+    font-family: Tahoma, Arial, "微软雅黑";
+    line-height: 1.5;
+}
+
+
+/* 大盒子 */
+
+.container {
+    width: 768px;
+    height: 500px;
+    margin: 80px auto 0;
+    border-radius: 6px;
+    background: rgba(199, 210, 212, 0.5);
+    background: url(../img/777.jpg) no-repeat;
+    background-size: 100% 100%;
+    overflow: hidden;
+    box-shadow: 5px 5px 20px #000;
+}
+
+
+/* 头部 */
+
+.container .head {
+    width: 100%;
+    height: 60px;
+    line-height: 20px;
+    padding: 10px 30px 10px 30px;
+    box-sizing: border-box;
+    background: rgba(46, 49, 124, 0.5);
+}
+
+.container .head h1 {
+    float: left;
+    width: 60px;
+}
+
+.container .head h1 a {
+    color: #eef7f2;
+    line-height: 36px;
+    text-shadow: 5px 2px 6px #2e317c;
+}
+
+.container .head .musicTitle {
+    float: left;
+    width: 220px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-left: 120px;
+    margin-top: 8px;
+    font-size: 16px;
+    cursor: default;
+    color: #eef7f2;
+}
+
+.container .head .search {
+    position: relative;
+    float: right;
+    width: 230px;
+    height: 40px;
+    margin-right: 60px;
+    line-height: 40px;
+    text-align: right;
+}
+
+.container .head .search input {
+    height: 30px;
+    outline: none;
+    border: none;
+    border-radius: 16px;
+    padding-left: 15px;
+    box-sizing: border-box;
+    width: 31px;
+    transition: all 0.3s;
+}
+
+.container .head .search button {
+    position: absolute;
+    top: 5.5px;
+    right: 1px;
+    width: 29px;
+    height: 29px;
+    border-radius: 50%;
+    font-size: 10px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background-color: #eef7f2;
+}
+
+.container .head .search:hover input {
+    width: 100%;
+}
+
+
+/* 主体 */
+
+.container .body::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+
+/* 左边部分 */
+
+.container .body .left {
+    float: left;
+    width: 200px;
+    overflow: hidden;
+}
+
+.container .body .left ul {
+    width: 217px;
+    height: 385px;
+    overflow: auto;
+    background: rgba(147, 181, 207, 0.5);
+}
+
+.container .body .left li {
+    position: relative;
+    height: 35px;
+    line-height: 35px;
+    padding-left: 10px;
+    padding-right: 40px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: pointer;
+    box-sizing: border-box;
+    font-size: 13px;
+}
+
+.container .body .left li {
+    background-color: rgba(186, 204, 217, 0.8);
+}
+
+.container .body .left li:nth-child(even) {
+    background-color: rgba(147, 181, 207, 0.8);
+}
+
+.container .body .left li i {
+    display: inline-block;
+    width: 17px;
+    height: 17px;
+    background: url(../img/play.png) no-repeat;
+    background-size: 15px;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+.container .body .left li em {
+    position: absolute;
+    top: 0;
+    left: 155px;
+    width: 30px;
+    height: 35px;
+    background: url(../img/icon.png) no-repeat;
+    background-size: 22px;
+    background-position: center 7px;
+    cursor: pointer;
+}
+
+
+/* 中间部分 */
+
+.container .body .center {
+    position: relative;
+    float: left;
+    width: 385px;
+    height: 385px;
+    padding-top: 30px;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.container .body .center #bigCircle {
+    display: inline-block;
+    position: relative;
+    width: 200px;
+    height: 200px;
+    border: 1px solid #000;
+    background: url(../img/coverall.png) no-repeat;
+    background-position: center center;
+    background-size: 204px 204px;
+    border-radius: 50%;
+}
+
+.container .body .center #bigCircle .littleCircle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 133px;
+    height: 134px;
+    border: 1px solid #000;
+    border-radius: 50%;
+}
+
+.container .body .center #bigCircle .littleCircle img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+.container .body .center .whirl {
+    animation: whirl 8s linear infinite;
+}
+
+@keyframes whirl {
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+    25% {
+        -webkit-transform: rotate(90deg);
+    }
+    50% {
+        -webkit-transform: rotate(180deg);
+    }
+    75% {
+        -webkit-transform: rotate(270deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+
+/* 右边部分 */
+
+.container .body .right {
+    float: right;
+    width: 183px;
+    height: 385px;
+    background-color: rgba(147, 181, 207, 0.5);
+    overflow: hidden;
+}
+
+.container .body .right h3 {
+    margin-top: 5px;
+    font-weight: 300;
+    padding-left: 10px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #2e317c;
+}
+
+.container .body .right ul {
+    width: 200px;
+    height: 353px;
+    overflow: auto;
+}
+
+.container .body .right ul li {
+    padding-top: 3px;
+    padding-bottom: 6px;
+    border-bottom: 0.5px solid #101f30;
+}
+
+.container .body .right ul li::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.container .body .right ul li .HeadPortraits {
+    float: left;
+    width: 35px;
+    height: 35px;
+    margin-top: 3px;
+    margin-left: 3px;
+    box-sizing: border-box;
+}
+
+.container .body .right ul li .HeadPortraits img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+.container .body .right ul li .comment {
+    float: left;
+    width: 143px;
+    padding-left: 10px;
+    padding-top: 5px;
+    box-sizing: border-box;
+    font-size: 10px;
+}
+
+.container .body .right ul li .comment span {
+    color: #112331;
+}
+
+.container .player {
+    height: 55px;
+    box-sizing: border-box;
+    background: rgba(46, 49, 124, 0.5);
+    padding-top: 10px;
+    padding-bottom: 5px;
+}
+
+.container .player .box {
+    width: 100%;
+    height: 40px;
+    border-radius: 3px;
+    text-align: center;
+    background-color: #f1f3f4;
+}
+
+.container .player audio {
+    width: 95%;
+    height: 40px;
+    outline: none;
+    z-index: -1;
+}
+
+.container .mask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .5);
+}
+
+.container .mask .mv {
+    position: relative;
+    width: 768px;
+    height: 500px;
+    margin: 80px auto 0;
+    background-color: #000;
+    z-index: 111;
+}
+
+.container .mask .mv a {
+    position: absolute;
+    top: -30px;
+    right: 0;
+    width: 53px;
+    height: 30px;
+    line-height: 30px;
+    text-align: right;
+    color: #fff;
+}
+
+.container .mask .mv video {
+    width: 100%;
+    height: 100%;
+    outline: none;
+    z-index: 1111;
+}

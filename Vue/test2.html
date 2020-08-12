@@ -15,6 +15,12 @@
         <button v-on:click='add'>+</button>
     </div>
     <script>
+        /**
+        * 简单的加减按钮
+        * 点击按钮时触发对应的方法
+        * 判断数字是否大于10或小于0
+        * 对应提示不用再加或者减了
+        */
         let box = new Vue({
             el: '#box',
             data: {

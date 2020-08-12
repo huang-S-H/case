@@ -9,24 +9,26 @@
 </head>
 
 <body>
-    <div class="app" v-html="html">{{appData}}
-        <input type="button" value="v-on指令" @click="cli">
-        <div v-text="appData"></div>
-
+    <div class="app"  >
+        {{appData}}
+        <div v-html="html"></div>
+        <input type="text" v-model="msg">
+        <button v-on:click="cli">lll</button>
+        <p >{{msg}}</p>
     </div>
-    <div id="app" v-html="html"></div>
 
 </body>
 <script>
     let app = new Vue({
-        el: ".app",
+        el: ".app", // 挂载点
         data: {
-            appData: 'hello vue!',
-            html: "<p></p>"
+            appData: 'hello vue!', // 数据
+            html: "<p>wlwlwl</p>", // html文本
+            msg:'hualali' // 绑定数据
         },
-        methods: {
+        methods: { // 存放方法的配置对象
             cli: function() {
-                alert(8)
+                alert(this.msg)
             }
         }
     })

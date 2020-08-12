@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <input v-model='search' type="text">
+        <ul>
+            <li v-for="(item, index) in change" :key="index">{{index}}---{{item.name}}---{{item.age}}</li>
+        </ul>
+        <button @click='click(2)'>年龄升序</button>
+        <button @click='click(1)'>年龄降序</button>
+        <button @click='click(0)'>原本顺序</button>
+    </div>
+    <script>
+    let vm = new Vue({
+        el : '#app',
+        data: {
+            presons:[ // 姓名库
+                {
+                    name:'tom',
+                    age:'1'
+                },
+                {
+                    name:'baob',
+                    age:'2'
+                },
+                {
+                    name:'jeck',
+                    age:'3'
+                },
+                {
+                    name:'rose',
+                    age:'4'
+                }
+            ],
+            rank : 0, // 排序值
+            search:'', // 搜索字
+           
+        },
+        computed: {
+            change() { // 计算属性  一旦相关数据发生变化就调用
+
+                const {search,presons,rank} = this // 解构赋值
+                 let xxx = presons.filter(element => {
+                        return element.name.indexOf(search) > -1 // 筛选数据
+                    });
+                    // console.log(xxx);
+
+                    if(rank !== 0) { // 依据排序值进行排序
+                        if(rank === 1) {
+                            xxx.sort((a,b)=>{
+                                console.log(a.age);
+                                console.log(b.age);
+                                return a.age-b.age
+                            })
+                        }else{
+                            xxx.sort((a,b)=>{
+                                console.log( b.age - a.age);
+                                return b.age - a.age
+                            })
+                        }
+                    }
+                return xxx // 将改变后的数据返回
+            }
+        },
+        methods: {
+            click (rank) { // 点击接受参数改变排序值
+                this.rank = rank 
+            }
+        },
+    })
+    </script>
+</body>
+</html>

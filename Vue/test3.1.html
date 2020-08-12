@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-model="firstName"/><br/>
+        <input type="text" v-model="lastName"/>
+        <input type="text" v-model="allName"/>
+        <input type="text" v-model="allName"/>
+        <input type="text" v-model="name"/>
+
+    </div>
+
+
+    <script>
+    let vm = new Vue({
+        el :'#app',
+        data:{
+            firstName :'a',
+            lastName :'b',
+            name :'a b'
+        },
+        computed: {
+            allName () {
+                return this.firstName +' '+ this.lastName
+            }
+        },
+        name :{
+            get() {
+             this.firstName +' '+this.lastName
+            },
+            set(value){
+                console.log(value);
+            }
+        },
+        watch: {
+            firstName : function(value) {
+                this.allName = value + " " + this.lastName
+            }
+            
+        }
+    })
+    vm.$watch('lastName',(value)=>{
+        this.anme = this.firstName +' '+value
+    })
+
+    </script>
+</body>
+</html>

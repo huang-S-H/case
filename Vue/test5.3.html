@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        .pp1-enter-active, .pp1-leave-active {
+            transition: opacity 5s;
+        }
+        .pp1-enter,.pp1-leave-to {
+            opacity: 0;
+        }
+
+        .pp2-enter-active {
+            transition: all 3s;
+        }
+
+        .pp2-leave-active {
+            transition: all 5s;
+        }
+        .pp2-enter,.pp2-leave-to {
+            opacity: 0;
+            transform: translatey(-30px);
+        }
+    </style>
+</head>
+<body>
+    <div id="app1"> 
+        <button @click="isShow = !isShow">变</button>
+        <transition name='pp1'>
+            <p v-show="isShow">啦啦啦</p>
+        </transition>
+    </div>
+    <div id="app2"> 
+        <button @click="isShow = !isShow">变</button>
+        <transition name='pp2'>
+            <p v-show="isShow">啦啦啦</p>
+        </transition>
+    </div>
+    <script>
+        new Vue({
+            el:"#app1",
+            data:{
+                isShow:true
+            }
+        })
+        new Vue({
+            el:"#app2",
+            data:{
+                isShow:true
+            }
+        })
+    </script>
+</body>
+</html>
